@@ -2,7 +2,8 @@ class Game
   TURNS = 12
 
   def initialize
-    @code = (1..6).to_a.sample(4).map(&:to_s)
+    @code = Array.new(4) { (1..6).to_a.sample }.map(&:to_s)
+    puts @code
   end
 
   def guess
@@ -17,18 +18,25 @@ class Game
 
   def give_feedback
     exact_match = 0
-    number_match = 0
+    partial_match = 0
+    used_values = []
 
-    @current_guess.each_with_index do |color, i|
-      if color == @code[i]
+    @code.each_with_index do |color, i|
+      if color == @current_guess[i]
         exact_match += 1
-      elsif @code.include?(color)
-        number_match += 1
+        used_values.push(i)
+      end
+    end
+
+    @code.each_with_index do |color, i|
+      if @current_guess.include?(color) & !used_values.include?(i)
+        partial_match += 1
+        used_values.push(i)
       end
     end
 
     puts "Correct number and position: #{exact_match}"
-    puts "Correct number, wrong position: #{number_match}"
+    puts "Correct number, wrong position: #{partial_match}"
   end
 
   def won?
