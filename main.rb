@@ -1,31 +1,29 @@
 class Game
-  COLORS = %w[blue green red yellow orange purple]
   TURNS = 12
-  attr_reader :code, :current_guess
 
   def initialize
-    @code = COLORS.sample(4)
+    @code = (1..6).to_a.sample(4).map(&:to_s)
   end
 
   def guess
     puts 'Make your guess!'
-    @current_guess = gets.chomp.downcase.split
+    @current_guess = gets.chomp.downcase.split('')
   end
 
   def give_feedback
     exact_match = 0
-    color_match = 0
+    number_match = 0
 
     @current_guess.each_with_index do |color, i|
       if color == @code[i]
         exact_match += 1
       elsif @code.include?(color)
-        color_match += 1
+        number_match += 1
       end
     end
 
-    puts "Correct color and position: #{exact_match}"
-    puts "Correct color, wrong position: #{color_match}"
+    puts "Correct number and position: #{exact_match}"
+    puts "Correct number, wrong position: #{number_match}"
   end
 
   def won?
