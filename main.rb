@@ -13,21 +13,23 @@ class Game
   end
 
   def give_feedback
-    @feedback = []
+    exact_match = 0
+    color_match = 0
 
     @current_guess.each_with_index do |color, i|
       if color == @code[i]
-        @feedback.push('red')
+        exact_match += 1
       elsif @code.include?(color)
-        @feedback.push('white')
+        color_match += 1
       end
     end
 
-    puts @feedback.shuffle
+    puts "Correct color and position: #{exact_match}"
+    puts "Correct color, wrong position: #{color_match}"
   end
 
   def won?
-    true if @feedback == %w[red red red red]
+    true if @current_guess == @code
   end
 
   def play
