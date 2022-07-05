@@ -8,6 +8,11 @@ class Game
   def guess
     puts 'Make your guess!'
     @current_guess = gets.chomp.downcase.split('')
+    p @current_guess
+    until @current_guess.all? { |n| (1..6).to_a.include?(n.to_i) } && @current_guess.length == 4
+      puts "Wrong input! Try again:"
+      @current_guess = gets.chomp.downcase.split('')
+    end
   end
 
   def give_feedback
@@ -31,7 +36,8 @@ class Game
   end
 
   def play
-    TURNS.times do
+    TURNS.times do |i|
+      puts "Turn #{i}"
       guess
       give_feedback
       if won?
