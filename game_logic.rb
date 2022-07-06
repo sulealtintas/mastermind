@@ -24,10 +24,6 @@ module GameLogic
     { exact_match: exact_match, partial_match: partial_match }
   end
 
-  def solved?(guess, code)
-    true if guess == code
-  end
-
   def valid_code?(code)
     code.all? { |n| (1..6).to_a.include?(n.to_i) } && code.length == 4
   end
