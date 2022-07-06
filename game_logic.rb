@@ -6,19 +6,19 @@ module GameLogic
     partial_match = 0
 
     guess.each_with_index do |n, i|
-      if guess[i] == code[i]
-        exact_match += 1
-        remaining_values.delete_at(remaining_values.index(n))
-        used_indexes.push(i)
-      end
+      next unless guess[i] == code[i]
+
+      exact_match += 1
+      remaining_values.delete_at(remaining_values.index(n))
+      used_indexes.push(i)
     end
 
     guess.each_with_index do |n, i|
-      if remaining_values.include?(n) and !used_indexes.include?(i)
-        partial_match += 1
-        remaining_values.delete_at(remaining_values.index(n))
-        used_indexes.push(i)
-      end
+      next unless remaining_values.include?(n) && !used_indexes.include?(i)
+
+      partial_match += 1
+      remaining_values.delete_at(remaining_values.index(n))
+      used_indexes.push(i)
     end
 
     { exact_match: exact_match, partial_match: partial_match }
