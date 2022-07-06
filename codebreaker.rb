@@ -1,5 +1,3 @@
-require './game_logic'
-
 class Codebreaker
   include GameLogic
   attr_reader :current_guess
@@ -10,19 +8,14 @@ class Codebreaker
   end
 
   def make_guess
-    puts 'Make your guess!'
-    @current_guess = gets.chomp.downcase.split('')
-    until valid_code?(@current_guess)
-      puts "Wrong input! Try again:"
-      @current_guess = gets.chomp.downcase.split('')
-    end
+    raise NotImplementedError
   end
 
   def win
-    puts "YOU WIN! You broke the code in #{@game.turn} turns."
+    raise NotImplementedError
   end
 
   def lose
-    puts "YOU LOSE! You ran out of turns."
+    raise NotImplementedError
   end
 end
