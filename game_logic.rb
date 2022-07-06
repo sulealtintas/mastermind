@@ -4,15 +4,15 @@ module GameLogic
     exact_match = 0
     partial_match = 0
 
-    code.each_with_index do |n, i|
-      if n == guess[i]
+    guess.each_with_index do |n, i|
+      if guess[i] == code[i] and !used_values.include?(i)
         exact_match += 1
         used_values.push(i)
       end
     end
 
-    code.each_with_index do |color, i|
-      if guess.include?(color) & !used_values.include?(i)
+    guess.each_with_index do |n, i|
+      if code.include?(n) & !used_values.include?(i)
         partial_match += 1
         used_values.push(i)
       end
