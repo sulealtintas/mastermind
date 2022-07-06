@@ -87,6 +87,3 @@ def show_instructions
   puts "The code breaker must correctly guess the code in no more than 12 turns."
   puts 'After each guess, there will be hints showing how close the guess was to the code.'
 end
-
-game = Game.new
-game.play
