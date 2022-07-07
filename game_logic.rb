@@ -1,4 +1,7 @@
 module GameLogic
+  TURNS = 12
+  COLORS = ['r','b','g','y','p','o']
+
   def compare(guess, code)
     used_indexes = []
     remaining_values = code.map(&:clone)
@@ -25,6 +28,6 @@ module GameLogic
   end
 
   def valid_code?(code)
-    code.all? { |n| (1..6).to_a.include?(n.to_i) } && code.length == 4
+    code.all? { |n| COLORS.to_a.include?(n) } && code.length == 4
   end
 end

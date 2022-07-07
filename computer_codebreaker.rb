@@ -1,10 +1,13 @@
 require './game_logic'
+require './codebreaker'
 
 class ComputerCodebreaker < Codebreaker
   def initialize(game)
     super
     @possible_codes = (1111..6666).to_a
-                                  .map { |code| code.to_s.split('') }
+                                  .map { |numeric_code| numeric_code.to_s.split('') }
+                                  .map { |numeric_code| numeric_code.map { |n| n.to_i-1 } }
+                                  .map { |indexes| GameLogic::COLORS.values_at(*indexes) }
                                   .select { |code| valid_code?(code) }
   end
 

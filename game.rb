@@ -6,13 +6,21 @@ class Game
   include GameLogic
   attr_reader :turn
 
+  def initialize
+    @turns = GameLogic::TURNS
+    @colors = GameLogic::COLORS
+  end
+
   def play
     show_instructions
-
     @game_mode = select_mode
     create_code
     create_codebreaker
-    12.times do |i|
+    game_loop
+  end
+
+  def game_loop
+    @turns.times do |i|
       @turn = i + 1
       puts "\nTurn #{@turn}"
       @codebreaker.make_guess
@@ -58,7 +66,7 @@ class Game
   end
 
   def random_code
-    Array.new(4) { (1..6).to_a.sample }.map(&:to_s)
+    @colors.sample(4)
   end
 
   def input_code
@@ -82,8 +90,13 @@ end
 def show_instructions
   puts 'MASTERMIND'
   puts 'The game will be played against the computer.'
-  puts 'You can play as either the code creator or breaker.'
-  puts 'The code creator will create a code of exactly 4 digits, each between 1 and 6.'
-  puts "The code breaker must correctly guess the code in no more than 12 turns."
+  puts 'You can play as either the maker or breaker of a secret code of exactly 4 colors.'
+  print 'There are 6 possible colors: '
+  @colors[0..4].each do |color|
+    print "#{color[0]} for #{color}, "
+  end
+  print "and #{@colors[-1][0]} for #{@colors[-1]}.\n"
+  puts "For example: 'roob' for red-orange-orange-blue."
+  puts "The code breaker must correctly guess the code in no more than #{@turns} turns."
   puts 'After each guess, there will be hints showing how close the guess was to the code.'
 end
