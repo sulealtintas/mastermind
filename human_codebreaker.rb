@@ -1,4 +1,4 @@
-require './game_logic'
+require './game_rules'
 require './codebreaker'
 
 class HumanCodebreaker < Codebreaker

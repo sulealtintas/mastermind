@@ -1,4 +1,4 @@
-module GameLogic
+module GameRules
   TURNS = 12
   COLORS = ['r','b','g','y','p','o']
 

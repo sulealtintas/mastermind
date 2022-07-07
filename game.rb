@@ -1,14 +1,14 @@
-require './game_logic'
+require './game_rules'
 require './human_codebreaker'
 require './computer_codebreaker'
 
 class Game
-  include GameLogic
+  include GameRules
   attr_reader :turn
 
   def initialize
-    @turns = GameLogic::TURNS
-    @colors = GameLogic::COLORS
+    @turns = GameRules::TURNS
+    @colors = GameRules::COLORS
   end
 
   def play

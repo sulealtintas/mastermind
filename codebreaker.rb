@@ -1,5 +1,5 @@
 class Codebreaker
-  include GameLogic
+  include GameRules
   attr_reader :current_guess
   attr_accessor :feedback
 

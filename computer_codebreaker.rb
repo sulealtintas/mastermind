@@ -1,4 +1,4 @@
-require './game_logic'
+require './game_rules'
 require './codebreaker'
 
 class ComputerCodebreaker < Codebreaker
@@ -7,7 +7,7 @@ class ComputerCodebreaker < Codebreaker
     @possible_codes = (1111..6666).to_a
                                   .map { |numeric_code| numeric_code.to_s.split('') }
                                   .map { |numeric_code| numeric_code.map { |n| n.to_i-1 } }
-                                  .map { |indexes| GameLogic::COLORS.values_at(*indexes) }
+                                  .map { |indexes| GameRules::COLORS.values_at(*indexes) }
                                   .select { |code| valid_code?(code) }
   end
 
