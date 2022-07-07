@@ -9,4 +9,4 @@ The player can choose to play as either the creator or breaker of a secret code 
 colors. Feedback is provided after each guess, and the code must be broken within 12 turns. The game is played against
 the computer.
 
-[![Run on Repl.it](https://repl.it/badge/github/@sulalt/mastermind)](https://repl.it/@sulalt/mastermind)
+[![Run on Repl.it](https://repl.it/badge/github/sulealtintas/mastermind)](https://repl.it/@sulalt/mastermind)
