@@ -1,6 +1,6 @@
 module GameRules
   TURNS = 12
-  COLORS = ['r','b','g','y','p','o']
+  COLORS = %w[r b g y p o]
 
   def compare(guess, code)
     used_indexes = []

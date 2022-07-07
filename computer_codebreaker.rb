@@ -6,7 +6,7 @@ class ComputerCodebreaker < Codebreaker
     super
     @possible_codes = (1111..6666).to_a
                                   .map { |numeric_code| numeric_code.to_s.split('') }
-                                  .map { |numeric_code| numeric_code.map { |n| n.to_i-1 } }
+                                  .map { |numeric_code| numeric_code.map { |n| n.to_i - 1 } }
                                   .map { |indexes| GameRules::COLORS.values_at(*indexes) }
                                   .select { |code| valid_code?(code) }
   end
