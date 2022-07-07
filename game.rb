@@ -8,7 +8,8 @@ class Game
 
   def initialize
     @turns = GameRules::TURNS
-    @colors = GameRules::COLORS
+    @color_names = GameRules::COLOR_NAMES
+    @color_codes = GameRules::COLOR_CODES
   end
 
   def play
@@ -66,7 +67,7 @@ class Game
   end
 
   def random_code
-    @colors.sample(4)
+    @color_codes.sample(4)
   end
 
   def input_code
@@ -92,10 +93,10 @@ def show_instructions
   puts 'The game will be played against the computer.'
   puts 'You can play as either the maker or breaker of a secret code of exactly 4 colors.'
   print 'There are 6 possible colors: '
-  @colors[0..4].each do |color|
+  @color_names[0..4].each do |color|
     print "#{color[0]} for #{color}, "
   end
-  print "and #{@colors[-1][0]} for #{@colors[-1]}.\n"
+  print "and #{@color_names[-1][0]} for #{@color_names[-1]}.\n"
   puts "For example: 'roob' for red-orange-orange-blue."
   puts "The code breaker must correctly guess the code in no more than #{@turns} turns."
   puts 'After each guess, there will be hints showing how close the guess was to the code.'

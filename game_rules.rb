@@ -1,6 +1,7 @@
 module GameRules
   TURNS = 12
-  COLORS = %w[r b g y p o]
+  COLOR_NAMES = %w[red blue green yellow pink orange]
+  COLOR_CODES = COLOR_NAMES.map { |color| color[0]}
 
   def compare(guess, code)
     used_indexes = []
@@ -28,6 +29,6 @@ module GameRules
   end
 
   def valid_code?(code)
-    code.all? { |n| COLORS.to_a.include?(n) } && code.length == 4
+    code.all? { |n| COLOR_CODES.include?(n) } && code.length == 4
   end
 end
