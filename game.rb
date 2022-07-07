@@ -82,8 +82,8 @@ class Game
   def give_feedback
     @codebreaker.feedback = compare(@codebreaker.current_guess, @secret_code)
 
-    puts "Correct number and position: #{@codebreaker.feedback[:exact_match]}"
-    puts "Correct number, wrong position: #{@codebreaker.feedback[:partial_match]}"
+    puts "Correct color and position: #{@codebreaker.feedback[:exact_match]}"
+    puts "Correct color, wrong position: #{@codebreaker.feedback[:partial_match]}"
   end
 end
 
