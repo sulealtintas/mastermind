@@ -14,7 +14,7 @@ class Game
 
   def play
     show_instructions
-    @game_mode = select_mode
+    select_mode
     create_code
     create_codebreaker
     game_loop
@@ -22,8 +22,7 @@ class Game
 
   def game_loop
     @turns.times do |i|
-      @turn = i + 1
-      puts "\nTurn #{@turn}"
+      puts "\nTurn #{i+1}"
       @codebreaker.make_guess
       give_feedback
       if @codebreaker.current_guess == @secret_code
@@ -40,12 +39,11 @@ class Game
     puts "Select your game mode by inputting '1' or '2'"
     puts '1: Player as codebreaker'
     puts '2: Computer as codebreaker'
-    game_mode = gets.chomp
-    until %w[1 2].include?(game_mode)
+    @game_mode = gets.chomp
+    until %w[1 2].include?(@game_mode)
       puts "Please input either '1' or '2'"
-      game_mode = gets.chomp
+      @game_mode = gets.chomp
     end
-    game_mode
   end
 
   def create_codebreaker
